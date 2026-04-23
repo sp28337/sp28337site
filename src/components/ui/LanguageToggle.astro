@@ -1,0 +1,16 @@
+---
+import { supportedLocales, defaultLocale } from '@/i18n';
+---
+
+<div class="inline-flex items-center rounded-lg border border-[var(--surface-border)] p-1" aria-label="Language switcher">
+  {supportedLocales.map((locale) => (
+    <button
+      class="rounded-md px-2 py-1 text-xs font-semibold uppercase transition hover:bg-[var(--surface)]"
+      data-locale-switch={locale}
+      aria-pressed={locale === defaultLocale ? 'true' : 'false'}
+      type="button"
+    >
+      {locale}
+    </button>
+  ))}
+</div>
