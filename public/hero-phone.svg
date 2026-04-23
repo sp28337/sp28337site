@@ -1,0 +1,16 @@
+<svg width="194" height="397" viewBox="0 0 194 397" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="8" width="178" height="381" rx="28" fill="#020617"/>
+  <rect x="21" y="28" width="152" height="341" rx="20" fill="#F8FAFC"/>
+  <rect x="66" y="15" width="62" height="7" rx="3.5" fill="#334155"/>
+  <rect x="34" y="45" width="126" height="18" rx="8" fill="#E2E8F0"/>
+  <rect x="42" y="51" width="56" height="7" rx="3.5" fill="#1D4ED8"/>
+  <rect x="34" y="74" width="126" height="92" rx="12" fill="#CBD5E1"/>
+  <rect x="44" y="88" width="74" height="9" rx="4.5" fill="#0F172A"/>
+  <rect x="44" y="104" width="104" height="6" rx="3" fill="#64748B"/>
+  <rect x="44" y="117" width="86" height="6" rx="3" fill="#64748B"/>
+  <rect x="44" y="131" width="52" height="18" rx="7" fill="#2563EB"/>
+  <rect x="34" y="176" width="126" height="52" rx="10" fill="#E2E8F0"/>
+  <rect x="34" y="236" width="126" height="52" rx="10" fill="#E2E8F0"/>
+  <rect x="34" y="296" width="126" height="52" rx="10" fill="#DBEAFE"/>
+  <text x="39" y="338" font-size="9" font-family="Inter, Arial, sans-serif" fill="#1E3A8A">Mobile-first CTA + fast load</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="740" height="452" viewBox="0 0 740 452" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="65" y1="35" x2="675" y2="385" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="70" y1="40" x2="665" y2="376" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#E2E8F0"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="700" height="392" rx="24" fill="url(#bg)"/>
+  <rect x="55" y="40" width="630" height="336" rx="16" fill="url(#panel)"/>
+  <rect x="70" y="58" width="602" height="42" rx="10" fill="#0F172A"/>
+  <rect x="84" y="72" width="120" height="14" rx="7" fill="#60A5FA"/>
+  <rect x="514" y="72" width="52" height="14" rx="7" fill="#334155"/>
+  <rect x="576" y="72" width="84" height="14" rx="7" fill="#1D4ED8"/>
+
+  <rect x="84" y="120" width="360" height="140" rx="14" fill="#CBD5E1"/>
+  <rect x="102" y="138" width="140" height="14" rx="7" fill="#0F172A"/>
+  <rect x="102" y="162" width="310" height="9" rx="4.5" fill="#64748B"/>
+  <rect x="102" y="179" width="260" height="9" rx="4.5" fill="#64748B"/>
+  <rect x="102" y="205" width="130" height="28" rx="8" fill="#2563EB"/>
+
+  <rect x="464" y="120" width="188" height="88" rx="14" fill="#0F172A"/>
+  <rect x="482" y="143" width="88" height="12" rx="6" fill="#38BDF8"/>
+  <rect x="482" y="165" width="145" height="10" rx="5" fill="#94A3B8"/>
+
+  <rect x="464" y="222" width="188" height="116" rx="14" fill="#E2E8F0"/>
+  <path d="M486 302C511.5 269 536.5 280.5 553 250.5C567 224.5 593 233 613 241.5" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="613" cy="241" r="7" fill="#1D4ED8"/>
+
+  <rect x="84" y="278" width="360" height="60" rx="12" fill="#E2E8F0"/>
+  <rect x="102" y="298" width="90" height="10" rx="5" fill="#0F172A"/>
+  <rect x="208" y="298" width="100" height="10" rx="5" fill="#475569"/>
+  <rect x="324" y="298" width="102" height="10" rx="5" fill="#64748B"/>
+
+  <rect x="0" y="400" width="740" height="40" rx="20" fill="#334155"/>
+  <rect x="310" y="410" width="120" height="12" rx="6" fill="#94A3B8"/>
+  <text x="105" y="94" font-size="16" font-family="Inter, Arial, sans-serif" fill="#DBEAFE">SEO-ready landing / desktop</text>
+</svg>

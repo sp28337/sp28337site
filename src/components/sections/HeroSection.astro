@@ -3,17 +3,187 @@ import Button from '@/components/ui/Button.astro';
 ---
 
 <section class="container-shell pt-20 pb-16 sm:pt-28">
-  <div class="rounded-3xl border border-[var(--surface-border)] px-6 py-12 sm:px-10 sm:py-16" style="background: var(--hero-gradient);">
-    <p class="text-sm font-semibold uppercase tracking-[0.2em] muted">Web engineering partner</p>
-    <h1 class="mt-4 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">
-      Building fast, scalable web products that turn traffic into growth.
-    </h1>
-    <p class="mt-6 max-w-2xl text-lg muted">
-      I help startups and companies launch high-performance websites, backend systems, and automation that drive real business outcomes.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <Button href="/contact">Start a project</Button>
-      <Button href="/cases" variant="secondary">View case studies</Button>
+  <div
+    class="hero-grid rounded-3xl border border-[var(--surface-border)] px-6 py-12 sm:px-10 sm:py-16"
+    style="background: var(--hero-gradient);"
+  >
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] muted">Web engineering partner</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-black tracking-tight sm:text-6xl">
+        Beautiful, interactive websites optimized for SEO, speed, and conversions.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg muted">
+        From strategy to launch: responsive product pages with technical SEO, Core Web Vitals focus, and measurable growth.
+      </p>
+      <ul class="hero-points mt-6 max-w-2xl">
+        <li>Technical SEO architecture (semantic markup, metadata, schema).</li>
+        <li>Fast UX with lightweight code, clean interactions, and accessibility.</li>
+        <li>Adaptive layouts for desktop, tablet, and mobile experiences.</li>
+      </ul>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href="/contact">Start a project</Button>
+        <Button href="/cases" variant="secondary">View case studies</Button>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-hero-visual>
+      <img
+        class="device device-laptop"
+        src="/hero-laptop.svg"
+        width="740"
+        height="452"
+        loading="eager"
+        alt="Laptop with analytics-focused website preview"
+      />
+      <img
+        class="device device-tablet"
+        src="/hero-tablet.svg"
+        width="326"
+        height="430"
+        loading="lazy"
+        alt="Tablet view of the same optimized website"
+      />
+      <img
+        class="device device-phone"
+        src="/hero-phone.svg"
+        width="194"
+        height="397"
+        loading="lazy"
+        alt="Phone view with mobile-first layout and call-to-action"
+      />
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const visual = document.querySelector('[data-hero-visual]');
+    if (!visual || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const onMove = (event) => {
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      visual.style.setProperty('--rx', `${y * -10}deg`);
+      visual.style.setProperty('--ry', `${x * 14}deg`);
+      visual.style.setProperty('--mx', `${x * 18}px`);
+      visual.style.setProperty('--my', `${y * 18}px`);
+    };
+
+    const reset = () => {
+      visual.style.setProperty('--rx', '0deg');
+      visual.style.setProperty('--ry', '0deg');
+      visual.style.setProperty('--mx', '0px');
+      visual.style.setProperty('--my', '0px');
+    };
+
+    visual.addEventListener('pointermove', onMove);
+    visual.addEventListener('pointerleave', reset);
+  })();
+</script>
+
+<style>
+  .hero-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .hero-points {
+    display: grid;
+    gap: 0.5rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+  }
+
+  .hero-visual {
+    --rx: 0deg;
+    --ry: 0deg;
+    --mx: 0px;
+    --my: 0px;
+    position: relative;
+    min-height: 350px;
+    perspective: 1200px;
+    isolation: isolate;
+  }
+
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 15% 12% 5%;
+    background: radial-gradient(circle at center, color-mix(in oklab, var(--accent) 26%, transparent), transparent 70%);
+    filter: blur(24px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .device {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 26px 50px rgba(15, 23, 42, 0.25);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    transform-style: preserve-3d;
+  }
+
+  .device-laptop {
+    width: min(100%, 530px);
+    left: 4%;
+    top: 12%;
+    transform: translate3d(calc(var(--mx) * 0.2), calc(var(--my) * 0.2), 0px)
+      rotateX(var(--rx)) rotateY(var(--ry));
+  }
+
+  .device-tablet {
+    width: clamp(150px, 28%, 220px);
+    right: 4%;
+    top: 2%;
+    transform: translate3d(calc(var(--mx) * -0.25), calc(var(--my) * -0.25), 60px)
+      rotateX(calc(var(--rx) * 0.7)) rotateY(calc(var(--ry) * 0.8)) rotate(6deg);
+  }
+
+  .device-phone {
+    width: clamp(92px, 18%, 130px);
+    right: 16%;
+    bottom: 4%;
+    transform: translate3d(calc(var(--mx) * -0.4), calc(var(--my) * -0.4), 80px)
+      rotateX(calc(var(--rx) * 0.6)) rotateY(calc(var(--ry) * 0.85)) rotate(-8deg);
+  }
+
+  .hero-visual:hover .device {
+    box-shadow: 0 34px 60px rgba(15, 23, 42, 0.3);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 2.4rem;
+    }
+
+    .hero-visual {
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-visual {
+      min-height: 280px;
+      margin-top: 0.75rem;
+    }
+
+    .device-laptop {
+      left: 0;
+      width: min(100%, 460px);
+    }
+
+    .device-tablet {
+      right: 0;
+    }
+
+    .device-phone {
+      right: 20%;
+      bottom: 0;
+    }
+  }
+</style>
