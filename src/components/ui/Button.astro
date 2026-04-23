@@ -5,7 +5,7 @@ interface Props {
   type?: 'button' | 'submit';
 }
 
-const { href, variant = 'primary', type = 'button' } = Astro.props;
+const { href, variant = 'primary', type = 'button', ...attrs } = Astro.props;
 
 const classes =
   variant === 'primary'
@@ -13,4 +13,4 @@ const classes =
     : 'inline-flex items-center rounded-xl border border-[var(--surface-border)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--accent)]';
 ---
 
-{href ? <a class={classes} href={href}><slot /></a> : <button class={classes} type={type}><slot /></button>}
+{href ? <a class={classes} href={href} {...attrs}><slot /></a> : <button class={classes} type={type} {...attrs}><slot /></button>}

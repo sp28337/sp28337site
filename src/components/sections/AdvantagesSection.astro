@@ -1,22 +1,20 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { t, defaultLocale } from '@/i18n';
 
-const points = [
-  'Architecture-first approach with future scaling in mind.',
-  'Strong SEO and performance practices from day one.',
-  'Clear communication, documentation, and delivery rhythm.',
-  'Cross-functional expertise: frontend, backend, DevOps, automation.'
-];
+const points = ['home.advantages.1', 'home.advantages.2', 'home.advantages.3', 'home.advantages.4'] as const;
 ---
 
 <section class="container-shell py-16">
   <SectionHeading
-    eyebrow="Why work with me"
-    title="A senior engineering mindset applied to business outcomes"
+    eyebrow={t(defaultLocale, 'home.advantages.eyebrow')}
+    title={t(defaultLocale, 'home.advantages.title')}
+    eyebrowKey="home.advantages.eyebrow"
+    titleKey="home.advantages.title"
   />
   <ul class="grid gap-3 md:grid-cols-2">
-    {points.map((point) => (
-      <li class="surface-card">{point}</li>
+    {points.map((key) => (
+      <li class="surface-card" data-i18n={key}>{t(defaultLocale, key)}</li>
     ))}
   </ul>
 </section>

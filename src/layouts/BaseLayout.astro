@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar.astro';
 import Footer from '@/components/layout/Footer.astro';
 import { SITE } from '@/config/site';
 import { toCanonical, type SeoInput, articleJsonLd } from '@/utils/seo';
+import { messages, defaultLocale, supportedLocales } from '@/i18n';
 import '@/styles/global.css';
 
 interface Props extends SeoInput {}
@@ -64,6 +65,43 @@ const organizationJsonLd = {
           html.classList.toggle('dark');
           localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
         });
+      })();
+    </script>
+    <script is:inline define:vars={{ i18nMessages: messages, i18nLocales: supportedLocales, i18nDefaultLocale: defaultLocale }}>
+      (() => {
+        const getLocale = () => {
+          const saved = localStorage.getItem('locale');
+          if (saved && i18nLocales.includes(saved)) return saved;
+          const browser = navigator.language.toLowerCase().startsWith('ru') ? 'ru' : i18nDefaultLocale;
+          return browser;
+        };
+
+        const applyLocale = (locale) => {
+          const dict = i18nMessages[locale] || i18nMessages[i18nDefaultLocale];
+          document.documentElement.lang = locale === 'ru' ? 'ru-RU' : 'en-US';
+
+          document.querySelectorAll('[data-i18n]').forEach((el) => {
+            const key = el.getAttribute('data-i18n');
+            if (key && dict[key]) el.textContent = dict[key];
+          });
+
+          document.querySelectorAll('[data-locale-switch]').forEach((el) => {
+            const pressed = el.getAttribute('data-locale-switch') === locale;
+            el.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+          });
+        };
+
+        const switchLocale = (locale) => {
+          if (!i18nLocales.includes(locale)) return;
+          localStorage.setItem('locale', locale);
+          applyLocale(locale);
+        };
+
+        document.querySelectorAll('[data-locale-switch]').forEach((el) => {
+          el.addEventListener('click', () => switchLocale(el.getAttribute('data-locale-switch')));
+        });
+
+        applyLocale(getLocale());
       })();
     </script>
   </body>

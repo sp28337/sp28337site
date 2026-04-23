@@ -1,38 +1,30 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { t, defaultLocale } from '@/i18n';
 
 const services = [
-  {
-    title: 'Website development',
-    summary: 'Astro, Next.js, and React websites focused on conversion, SEO, and maintainability.'
-  },
-  {
-    title: 'Backend engineering',
-    summary: 'FastAPI services, robust API contracts, integrations, and data workflows.'
-  },
-  {
-    title: 'DevOps & deployment',
-    summary: 'CI/CD, cloud deployment, observability, and uptime-first release workflows.'
-  },
-  {
-    title: 'Telegram bots',
-    summary: 'Automation bots and conversational workflows integrated with business systems.'
-  }
-];
+  { titleKey: 'home.services.website.title', summaryKey: 'home.services.website.summary' },
+  { titleKey: 'home.services.backend.title', summaryKey: 'home.services.backend.summary' },
+  { titleKey: 'home.services.devops.title', summaryKey: 'home.services.devops.summary' },
+  { titleKey: 'home.services.bots.title', summaryKey: 'home.services.bots.summary' }
+] as const;
 ---
 
 <section id="services" class="container-shell py-16">
   <SectionHeading
-    eyebrow="Services"
-    title="From polished frontend to scalable backend"
-    description="Delivery-oriented services to ship quickly without sacrificing long-term quality."
+    eyebrow={t(defaultLocale, 'home.services.eyebrow')}
+    title={t(defaultLocale, 'home.services.title')}
+    description={t(defaultLocale, 'home.services.description')}
+    eyebrowKey="home.services.eyebrow"
+    titleKey="home.services.title"
+    descriptionKey="home.services.description"
   />
 
   <div class="grid gap-4 md:grid-cols-2">
     {services.map((service) => (
       <article class="surface-card">
-        <h3 class="text-xl font-semibold">{service.title}</h3>
-        <p class="mt-3 muted">{service.summary}</p>
+        <h3 class="text-xl font-semibold" data-i18n={service.titleKey}>{t(defaultLocale, service.titleKey)}</h3>
+        <p class="mt-3 muted" data-i18n={service.summaryKey}>{t(defaultLocale, service.summaryKey)}</p>
       </article>
     ))}
   </div>
