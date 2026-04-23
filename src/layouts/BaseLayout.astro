@@ -1,0 +1,70 @@
+---
+import Navbar from '@/components/layout/Navbar.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { SITE } from '@/config/site';
+import { toCanonical, type SeoInput, articleJsonLd } from '@/utils/seo';
+import '@/styles/global.css';
+
+interface Props extends SeoInput {}
+
+const { title, description, pathname, image = '/og-cover.jpg', article } = Astro.props;
+const canonical = toCanonical(pathname);
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  sameAs: [SITE.telegram]
+};
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, SITE.url).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#0f172a" />
+
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)}></script>
+    {article && (
+      <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd(article))}></script>
+    )}
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      (() => {
+        const btn = document.getElementById('theme-toggle');
+        btn?.addEventListener('click', () => {
+          const html = document.documentElement;
+          html.classList.toggle('dark');
+          localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    </script>
+  </body>
+</html>

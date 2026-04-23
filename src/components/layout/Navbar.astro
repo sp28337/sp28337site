@@ -1,0 +1,20 @@
+---
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
+import { NAV_LINKS } from '@/config/site';
+---
+
+<nav class="sticky top-0 z-50 border-b border-[var(--surface-border)] bg-[color:color-mix(in_oklab,var(--bg)_90%,transparent)] backdrop-blur">
+  <div class="container-shell flex items-center justify-between py-4">
+    <a class="logo-wordmark text-2xl text-[var(--text)]" href="/">sp28337</a>
+    <div class="hidden items-center gap-6 md:flex">
+      {NAV_LINKS.map((item) => (
+        <a class="text-sm font-medium text-[var(--text)] transition hover:text-[var(--accent)]" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+    </div>
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+    </div>
+  </div>
+</nav>

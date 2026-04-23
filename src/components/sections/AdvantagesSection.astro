@@ -1,0 +1,22 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const points = [
+  'Architecture-first approach with future scaling in mind.',
+  'Strong SEO and performance practices from day one.',
+  'Clear communication, documentation, and delivery rhythm.',
+  'Cross-functional expertise: frontend, backend, DevOps, automation.'
+];
+---
+
+<section class="container-shell py-16">
+  <SectionHeading
+    eyebrow="Why work with me"
+    title="A senior engineering mindset applied to business outcomes"
+  />
+  <ul class="grid gap-3 md:grid-cols-2">
+    {points.map((point) => (
+      <li class="surface-card">{point}</li>
+    ))}
+  </ul>
+</section>

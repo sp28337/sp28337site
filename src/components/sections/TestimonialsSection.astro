@@ -1,0 +1,26 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const testimonials = [
+  {
+    quote: 'The new platform loaded faster, ranked better, and finally reflected our brand quality.',
+    author: 'Product Lead, B2B SaaS'
+  },
+  {
+    quote: 'Great architecture decisions and clean handoff docs made our internal team much more effective.',
+    author: 'CTO, FinTech startup'
+  }
+];
+---
+
+<section class="container-shell py-16">
+  <SectionHeading eyebrow="Testimonials" title="What clients say" />
+  <div class="grid gap-4 md:grid-cols-2">
+    {testimonials.map((item) => (
+      <figure class="surface-card">
+        <blockquote class="text-lg">“{item.quote}”</blockquote>
+        <figcaption class="mt-4 text-sm muted">{item.author}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

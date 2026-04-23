@@ -1,0 +1,13 @@
+---
+import { SITE } from '@/config/site';
+---
+
+<footer class="mt-20 border-t border-[var(--surface-border)]">
+  <div class="container-shell flex flex-col gap-4 py-10 text-sm muted sm:flex-row sm:items-center sm:justify-between">
+    <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+    <div class="flex items-center gap-4">
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <a href={SITE.telegram} target="_blank" rel="noreferrer">Telegram</a>
+    </div>
+  </div>
+</footer>

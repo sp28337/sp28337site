@@ -1,0 +1,39 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const services = [
+  {
+    title: 'Website development',
+    summary: 'Astro, Next.js, and React websites focused on conversion, SEO, and maintainability.'
+  },
+  {
+    title: 'Backend engineering',
+    summary: 'FastAPI services, robust API contracts, integrations, and data workflows.'
+  },
+  {
+    title: 'DevOps & deployment',
+    summary: 'CI/CD, cloud deployment, observability, and uptime-first release workflows.'
+  },
+  {
+    title: 'Telegram bots',
+    summary: 'Automation bots and conversational workflows integrated with business systems.'
+  }
+];
+---
+
+<section id="services" class="container-shell py-16">
+  <SectionHeading
+    eyebrow="Services"
+    title="From polished frontend to scalable backend"
+    description="Delivery-oriented services to ship quickly without sacrificing long-term quality."
+  />
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {services.map((service) => (
+      <article class="surface-card">
+        <h3 class="text-xl font-semibold">{service.title}</h3>
+        <p class="mt-3 muted">{service.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>
