@@ -1,0 +1,54 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const services = [
+  {
+    name: 'Website development',
+    detail: 'Production-grade websites using Astro, Next.js, and React with SEO and performance engineering.',
+    benefits: ['Higher conversion rates', 'Maintainable codebase', 'Strong technical SEO']
+  },
+  {
+    name: 'Backend (FastAPI)',
+    detail: 'RESTful and async backend architecture with testing, observability, and clean domain boundaries.',
+    benefits: ['Reliable integrations', 'Clear API contracts', 'Scalable architecture']
+  },
+  {
+    name: 'DevOps / deployment',
+    detail: 'Infrastructure and CI/CD pipelines designed for safe releases and fast rollback.',
+    benefits: ['Faster deployments', 'Lower downtime risk', 'Consistent environments']
+  },
+  {
+    name: 'Telegram bots',
+    detail: 'Bots for support, operations, and lead qualification integrated with your internal tools.',
+    benefits: ['Operational efficiency', '24/7 automation', 'Reduced manual workload']
+  }
+];
+---
+
+<BaseLayout
+  title="Services | sp28337"
+  description="Website development, FastAPI backend, DevOps, and Telegram bot development services."
+  pathname="/services"
+>
+  <section class="container-shell py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="Services"
+      title="Engineering services that blend speed with long-term scalability"
+      description="Each engagement is scoped around outcomes, timelines, and implementation quality."
+    />
+    <div class="grid gap-5 md:grid-cols-2">
+      {services.map((service) => (
+        <article class="surface-card">
+          <h3 class="text-xl font-semibold">{service.name}</h3>
+          <p class="mt-3 muted">{service.detail}</p>
+          <ul class="mt-4 list-inside list-disc space-y-1 text-sm">
+            {service.benefits.map((benefit) => (
+              <li>{benefit}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

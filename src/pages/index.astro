@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import ServicesSection from '@/components/sections/ServicesSection.astro';
+import AdvantagesSection from '@/components/sections/AdvantagesSection.astro';
+import CasesSection from '@/components/sections/CasesSection.astro';
+import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
+import ContactCtaSection from '@/components/sections/ContactCtaSection.astro';
+import { SITE } from '@/config/site';
+---
+
+<BaseLayout title={SITE.title} description={SITE.description} pathname="/">
+  <HeroSection />
+  <ServicesSection />
+  <AdvantagesSection />
+  <CasesSection />
+  <TestimonialsSection />
+  <ContactCtaSection />
+</BaseLayout>

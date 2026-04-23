@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const skills = ['Astro', 'Next.js', 'React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Docker', 'CI/CD'];
+const experience = [
+  {
+    role: 'Senior Full-Stack Engineer / Consultant',
+    period: '2021 — Present',
+    notes: 'Delivering web platform architecture, implementation, and technical strategy for startups and SMEs.'
+  },
+  {
+    role: 'Product-focused Software Engineer',
+    period: '2018 — 2021',
+    notes: 'Worked on B2B products, internal systems, and growth-focused frontends.'
+  }
+];
+---
+
+<BaseLayout
+  title="About & Resume | sp28337"
+  description="Professional background, technology stack, and capabilities of sp28337."
+  pathname="/about"
+>
+  <section class="container-shell py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="About"
+      title="Senior web engineer focused on business impact"
+      description="I design and build modern web systems where speed, maintainability, and growth metrics are equally important."
+    />
+
+    <div class="grid gap-8 lg:grid-cols-2">
+      <article class="surface-card">
+        <h3 class="text-xl font-semibold">Short bio</h3>
+        <p class="mt-3 muted">
+          I help founders and teams move from vague product ideas to reliable production platforms.
+          My approach combines strategic product thinking with hands-on implementation across frontend,
+          backend, and deployment infrastructure.
+        </p>
+      </article>
+
+      <article class="surface-card">
+        <h3 class="text-xl font-semibold">Core skills</h3>
+        <ul class="mt-4 flex flex-wrap gap-2 text-sm">
+          {skills.map((skill) => (
+            <li class="rounded-full border border-[var(--surface-border)] px-3 py-1">{skill}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+
+    <article class="mt-8 surface-card">
+      <h3 class="text-xl font-semibold">Experience</h3>
+      <div class="mt-4 space-y-4">
+        {experience.map((item) => (
+          <div>
+            <p class="font-semibold">{item.role}</p>
+            <p class="text-sm muted">{item.period}</p>
+            <p class="mt-2 text-sm">{item.notes}</p>
+          </div>
+        ))}
+      </div>
+    </article>
+  </section>
+</BaseLayout>
