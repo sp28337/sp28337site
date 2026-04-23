@@ -1,16 +1,103 @@
 export const supportedLocales = ['en', 'ru'] as const;
 
 export type Locale = (typeof supportedLocales)[number];
+export type TranslationKey = keyof (typeof messages)['en'];
 
 export const defaultLocale: Locale = 'en';
 
-export const messages: Record<Locale, Record<string, string>> = {
+export const messages = {
   en: {
-    cta: 'Book a call',
-    services: 'Services'
+    'nav.home': 'Home',
+    'nav.services': 'Services',
+    'nav.cases': 'Cases',
+    'nav.blog': 'Blog',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+    'footer.rights': 'All rights reserved.',
+    'hero.eyebrow': 'Web engineering partner',
+    'hero.title': 'Building fast, scalable web products that turn traffic into growth.',
+    'hero.description':
+      'I help startups and companies launch high-performance websites, backend systems, and automation that drive real business outcomes.',
+    'hero.ctaPrimary': 'Start a project',
+    'hero.ctaSecondary': 'View case studies',
+    'home.services.eyebrow': 'Services',
+    'home.services.title': 'From polished frontend to scalable backend',
+    'home.services.description': 'Delivery-oriented services to ship quickly without sacrificing long-term quality.',
+    'home.services.website.title': 'Website development',
+    'home.services.website.summary': 'Astro, Next.js, and React websites focused on conversion, SEO, and maintainability.',
+    'home.services.backend.title': 'Backend engineering',
+    'home.services.backend.summary': 'FastAPI services, robust API contracts, integrations, and data workflows.',
+    'home.services.devops.title': 'DevOps & deployment',
+    'home.services.devops.summary': 'CI/CD, cloud deployment, observability, and uptime-first release workflows.',
+    'home.services.bots.title': 'Telegram bots',
+    'home.services.bots.summary': 'Automation bots and conversational workflows integrated with business systems.',
+    'home.advantages.eyebrow': 'Why work with me',
+    'home.advantages.title': 'A senior engineering mindset applied to business outcomes',
+    'home.advantages.1': 'Architecture-first approach with future scaling in mind.',
+    'home.advantages.2': 'Strong SEO and performance practices from day one.',
+    'home.advantages.3': 'Clear communication, documentation, and delivery rhythm.',
+    'home.advantages.4': 'Cross-functional expertise: frontend, backend, DevOps, automation.',
+    'home.cases.eyebrow': 'Selected work',
+    'home.cases.title': 'Cases that delivered measurable impact',
+    'home.cases.description': 'A preview of recent projects across growth, product, and automation.',
+    'home.cases.1.title': 'SaaS marketing revamp',
+    'home.cases.1.result': '+38% lead conversion',
+    'home.cases.2.title': 'Internal ops dashboard',
+    'home.cases.2.result': '2x faster reporting cycle',
+    'home.cases.3.title': 'E-commerce automation bot',
+    'home.cases.3.result': 'Saved 30+ hours/week',
+    'home.testimonials.eyebrow': 'Testimonials',
+    'home.testimonials.title': 'What clients say',
+    'home.cta.title': 'Ready to ship your next product iteration?',
+    'home.cta.description': 'Let’s align on scope, milestones, and measurable outcomes.',
+    'home.cta.button': 'Book discovery call'
   },
   ru: {
-    cta: 'Запланировать звонок',
-    services: 'Услуги'
+    'nav.home': 'Главная',
+    'nav.services': 'Услуги',
+    'nav.cases': 'Кейсы',
+    'nav.blog': 'Блог',
+    'nav.about': 'Обо мне',
+    'nav.contact': 'Контакты',
+    'footer.rights': 'Все права защищены.',
+    'hero.eyebrow': 'Партнёр по веб-разработке',
+    'hero.title': 'Создаю быстрые и масштабируемые веб-продукты, которые превращают трафик в рост.',
+    'hero.description':
+      'Помогаю стартапам и компаниям запускать производительные сайты, backend-системы и автоматизацию с реальным бизнес-результатом.',
+    'hero.ctaPrimary': 'Обсудить проект',
+    'hero.ctaSecondary': 'Смотреть кейсы',
+    'home.services.eyebrow': 'Услуги',
+    'home.services.title': 'От продуманного frontend до масштабируемого backend',
+    'home.services.description': 'Практичные услуги для быстрого запуска без потери качества в долгую.',
+    'home.services.website.title': 'Разработка сайтов',
+    'home.services.website.summary': 'Сайты на Astro, Next.js и React с фокусом на конверсии, SEO и поддерживаемость.',
+    'home.services.backend.title': 'Backend разработка',
+    'home.services.backend.summary': 'Сервисы на FastAPI, надёжные API-контракты, интеграции и работа с данными.',
+    'home.services.devops.title': 'DevOps и деплой',
+    'home.services.devops.summary': 'CI/CD, облачная инфраструктура, наблюдаемость и безопасные релизы.',
+    'home.services.bots.title': 'Telegram-боты',
+    'home.services.bots.summary': 'Автоматизация и диалоговые сценарии, интегрированные в бизнес-процессы.',
+    'home.advantages.eyebrow': 'Почему со мной',
+    'home.advantages.title': 'Инженерный подход уровня senior, ориентированный на бизнес-результат',
+    'home.advantages.1': 'Сначала архитектура — с учётом будущего масштабирования.',
+    'home.advantages.2': 'SEO и производительность закладываются с первого дня.',
+    'home.advantages.3': 'Прозрачная коммуникация, документация и ритм поставки.',
+    'home.advantages.4': 'Кросс-функциональная экспертиза: frontend, backend, DevOps, автоматизация.',
+    'home.cases.eyebrow': 'Избранные проекты',
+    'home.cases.title': 'Кейсы с измеримым эффектом',
+    'home.cases.description': 'Примеры проектов в росте, продукте и автоматизации.',
+    'home.cases.1.title': 'Обновление SaaS-маркетинга',
+    'home.cases.1.result': '+38% к конверсии в лид',
+    'home.cases.2.title': 'Внутренняя ops-панель',
+    'home.cases.2.result': 'Отчётность в 2 раза быстрее',
+    'home.cases.3.title': 'Бот автоматизации e-commerce',
+    'home.cases.3.result': 'Экономия 30+ часов в неделю',
+    'home.testimonials.eyebrow': 'Отзывы',
+    'home.testimonials.title': 'Что говорят клиенты',
+    'home.cta.title': 'Готовы к следующей итерации продукта?',
+    'home.cta.description': 'Согласуем объём, этапы и измеримые результаты.',
+    'home.cta.button': 'Записаться на звонок'
   }
-};
+} as const;
+
+export const t = (locale: Locale, key: TranslationKey): string => messages[locale][key] ?? messages[defaultLocale][key];

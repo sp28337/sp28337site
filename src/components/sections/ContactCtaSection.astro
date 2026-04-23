@@ -1,13 +1,14 @@
 ---
 import Button from '@/components/ui/Button.astro';
+import { t, defaultLocale } from '@/i18n';
 ---
 
 <section class="container-shell py-16">
   <div class="surface-card flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
     <div>
-      <h2 class="text-2xl font-bold">Ready to ship your next product iteration?</h2>
-      <p class="mt-2 muted">Let’s align on scope, milestones, and measurable outcomes.</p>
+      <h2 class="text-2xl font-bold" data-i18n="home.cta.title">{t(defaultLocale, 'home.cta.title')}</h2>
+      <p class="mt-2 muted" data-i18n="home.cta.description">{t(defaultLocale, 'home.cta.description')}</p>
     </div>
-    <Button href="/contact">Book discovery call</Button>
+    <Button href="/contact" data-i18n="home.cta.button">{t(defaultLocale, 'home.cta.button')}</Button>
   </div>
 </section>
