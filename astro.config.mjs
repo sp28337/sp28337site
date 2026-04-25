@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
@@ -17,5 +17,21 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Climate Crisis",
+      cssVariable: "--font-climate-crisis",
+      weights: [400],
+      subsets: ["latin", "cyrillic"],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Dela Gothic One",
+      cssVariable: "--font-dela-gothic",
+      weights: [400],
+      subsets: ["latin", "cyrillic"],
+    }
+  ]
 });

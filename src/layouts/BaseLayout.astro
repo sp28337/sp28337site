@@ -5,6 +5,8 @@ import { SITE } from '@/config/site';
 import { toCanonical, type SeoInput, articleJsonLd } from '@/utils/seo';
 import { messages, defaultLocale, supportedLocales } from '@/i18n';
 import '@/styles/global.css';
+import { Font } from 'astro:assets';
+
 
 interface Props extends SeoInput {}
 
@@ -50,6 +52,8 @@ const organizationJsonLd = {
     {article && (
       <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd(article))}></script>
     )}
+    <Font cssVariable="--font-climate-crisis" preload />
+    <Font cssVariable="--font-dela-gothic" preload />
   </head>
   <body>
     <Navbar />
